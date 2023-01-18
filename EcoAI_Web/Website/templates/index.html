@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Air Quality Predictor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1>EcoAI</h1>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <div class="nav-right">
+          <a href="{{ url_for('login') }}" id="login">Login with Google</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <img src="{{ url_for('static',filename='hero.png') }}" alt="Smog over a city">
+        <div class="hero-text">
+          <h1>Breathe Easier with Air Quality Predictor</h1>
+          <p>Our ML-powered tool predicts air quality based on your health condition and helps you take control of your breathing.</p>
+          <a href="{{ url_for('login') }}" ><button class="cta-button">Get Started</button></a>
+        </div>
+      </section>
+      <section class="about">
+        <h2>How it Works</h2>
+        <p>Air Quality Predictor uses advanced AI algorithms to analyze data on air pollution and weather patterns. When you log in with your Google account, we access your location and health condition data to give you a personalized air quality prediction. You can then use this information to plan your activities and protect your health.</p>
+      </section>
+      <section class="features">
+        <h2>Features</h2>
+        <ul>
+          <li>
+            <img src="{{ url_for('static',filename='location.jpg') }}" alt="Location tracking">
+            <h3>Location Tracking</h3>
+            <p>Our tool uses your device's GPS to track your location and give you accurate air quality predictions.</p>
+          </li>
+          <li>
+            <img src="{{ url_for('static',filename='health.jpg') }}" alt="Health condition analysis">
+            <h3>Health Condition Analysis</h3>
+            <p>We analyze your health condition data to give you a personalized air quality prediction that takes into account your unique needs.</p>
+          </li>
+          <li>
+            <img src="{{ url_for('static',filename='realtime.jpg') }}" alt="Real-time updates">
+            <h3>Real-time Updates</h3>
+            <p>Our tool provides real-time updates on air quality, so you can stay informed and take action to protect your health.</p>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>Copyright ©2022 Air Quality Predictor</p>
+    </footer>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+      function onSignIn() 
+      {
+        gapi.load('auth2', function() {
+        gapi.auth2.init({
+        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+        });
+        });
+        // Get the current user's ID token
+        var id_token = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token;
+        // Send the ID token to your server for verification and to create a session
+        // You can use an XMLHttpRequest, fetch, or any other method to send the token
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'verify-token.php');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+        console.log(xhr.responseText);
+        // Handle the response from the server (e.g. redirect to the user's dashboard)
+        };
+        xhr.send('id_token=' + id_token);
+    }
+</script>
+  </body>
+</html>

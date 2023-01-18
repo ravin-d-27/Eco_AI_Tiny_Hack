@@ -1,0 +1,149 @@
+/* Global styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #6200EE;
+  }
+
+  h1{
+    margin: 0;
+}
+  
+  nav {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: grey;
+  }
+  
+  nav h1 {
+    font-size: 2rem;
+    color: white;
+    margin-right: auto;
+  }
+  
+  nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 2rem;
+    padding: 5px 10px;
+  }
+  
+  nav a:hover {
+    background-color: lightslategray;
+  }
+
+  #logout:hover {
+    background-color: red;
+  }
+  /* Current Location section styles */
+  .current-location {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .current-location h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    }
+    
+    .current-location p {
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    }
+    
+    /* Other Cities section styles */
+    .other-cities {
+    padding: 50px;
+    background-color: #f5f5f5;
+    }
+    
+    .other-cities h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    }
+    
+    .other-cities ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    }
+    
+    .other-cities li {
+    width: 30%;
+    margin: 0 10px 20px;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .input-fields{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+      }
+
+      label
+      {
+        margin-bottom: auto;
+        text-align: center;
+      }
+
+      form
+      {
+        width: 60%;
+      }
+
+      input[type=submit]
+      {
+        text-align: -webkit-center;
+      }
+    
+      input{
+        width: 20%;
+        /* padding: 12px 20px; */
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        outline: none;
+    }
+
+    /* Footer styles */
+    footer {
+    background-color: #6200EE;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    }  
+
+    
+

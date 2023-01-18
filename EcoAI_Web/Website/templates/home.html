@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Air Quality Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='home.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+        <nav>
+            <h1>EcoAI</h1>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <div class="nav-right">
+              <a href="{{ url_for('logout') }}" id="logout">Logout</a>
+            </div>
+          </nav>
+    </header>
+    <main>
+      <section class="current-location">
+        <h3>Current Location</h3><br>
+        <p>Latitude : <span id="latitude"></span> </p>
+        <p>Longitude : <span id="longitude" ></span> </p>
+        <p>City : <span id="city" ></span> </p>
+        <h3>Air Quality Index (AQI) : <span id="aqidata"></span> </h3>
+        <p id="aqi"></p>
+      </section>
+      <section class="other-cities">
+        <h2>Other Cities</h2>
+        <ul>
+          {% for city in cities %}
+          <li><a href="/{{ city }}">{{ city }}</a></li>
+          {% endfor %}
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>Copyright ©2022 Air Quality Predictor</p>
+    </footer>
+    <script>
+  navigator.geolocation.getCurrentPosition(function(location) {
+    var lat = location.coords.latitude;
+    var lng = location.coords.longitude;
+    latitude.innerHTML = lat;
+    longitude.innerHTML = lng;
+    fetch('https://api.airvisual.com/v2/nearest_city?lat=' + lat + '&lon=' + lng + '&key=' + "86261747-5e93-484f-9090-f5ef994af4d1")
+        .then(response => response.json())
+        .then(data => {
+        console.log(data);
+        city.innerHTML = data.data.city;
+        aqidata.innerHTML = String(data.data.current.pollution.aqius);
+        });
+    console.log("Location permission granted");
+    console.log("lat: " + lat + " - lng: " + lng);
+  },
+  function(error) {
+    console.log("Location permission denied");
+  });
+        </script>
+
+  </body>
+</html>
